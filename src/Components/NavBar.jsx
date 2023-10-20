@@ -4,11 +4,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import generationService from '../Services/generationService';
+import versionService from '../Services/versionService';
 // import Button from 'react-bootstrap/Button';
 // import Form from 'react-bootstrap/Form';
 
 function NavBar() {
     const [generation, setGeneration] = useState([]);
+    const [version, setVersion] = useState([])
 
     const fetchGeneration = async () =>{
         try {
@@ -18,9 +20,20 @@ function NavBar() {
             console.log(error);
         }
     }
+    const fetchVersion = async () =>{
+      try {
+        const response = await versionService.getVersionService();
+        setVersion(response.data.results)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     useEffect(()=>{
         fetchGeneration()
-    },[])
+        fetchVersion()
+    },[]);
+
     const upperCase = (string) => {
       let strCopy = string.split("-")
       let startString = strCopy[0];
@@ -38,6 +51,11 @@ function NavBar() {
             <NavDropdown title="Génération" id="generation">
                 {generation.map(gen =>{
                     return <NavDropdown.Item key={gen.name} href={'/Generation/'+gen.name}>{upperCase(gen.name)}</ NavDropdown.Item>
+                })}
+            </NavDropdown>
+            <NavDropdown title="Version" id="version">
+                {version.map(v =>{
+                    return <NavDropdown.Item key={v.name} href={'/Version/'+v.name}>{v.name}</ NavDropdown.Item>
                 })}
             </NavDropdown>
           </Nav>

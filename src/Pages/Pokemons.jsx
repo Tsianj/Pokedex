@@ -69,7 +69,7 @@ const Pokemons = () => {
 
     return <>
         <h1 className={"text-center"} style={{color: "#ffce06"}}>Liste des Pokémons</h1>
-        <div className='d-flex col-6 pl-3'> 
+        <div className='d-flex justify-content-around'> 
             <input type="text" className='form-control m-5 ml-5' placeholder='Recherche dans le Pokédex' value={searchValueAll} onChange={handleChangeAll} />
             <input type="text" className='form-control m-5 ml-5' placeholder='Recherche sur la page actuel' value={searchValue} onChange={handleChange} />
         </div>

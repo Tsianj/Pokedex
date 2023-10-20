@@ -102,3 +102,10 @@ h1{
   -webkit-text-stroke-color: blue;
   letter-spacing: 5px;
 }
+.dropdown-menu {
+  max-height: 300px;
+  overflow: auto;
+}
+.dropdown-menu > .dropdown-item:hover{
+  background-color: #ffce06;
+}
