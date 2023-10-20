@@ -5,6 +5,7 @@ import '../Styles/pokemonCard.css';
 import pokemonService from "../Services/pokemonService";
 import Loading from "./Loading";
 import ListGroup from 'react-bootstrap/ListGroup';
+import Loader from './Loader';
 
 const Pokemon = ({pokemon}) => {
     const [currentPokemon, setCurrentPokemon] = useState({});
@@ -40,7 +41,7 @@ const Pokemon = ({pokemon}) => {
             </Card.Body>
         </Link>
     </Card> :
-        <Loading />
+        <Loader />
     }
     </>;
 };
